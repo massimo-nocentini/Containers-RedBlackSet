@@ -40,10 +40,11 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          witness: aWitness
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
-			  aBinaryTree
-				  leftBinaryTreeElement: link
-				  value: value
-				  rightBinaryTreeElement: nextLink ]
+			  self class new
+				  previousLink: link;
+				  value: value;
+				  nextLink: nextLink;
+				  yourself ]
 		  ifFalse: [ 
 			  | link |
 			  link := nextLink
@@ -51,8 +52,9 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          witness: value
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
-			  aBinaryTree
-				  leftBinaryTreeElement: previousLink
-				  value: value
-				  rightBinaryTreeElement: link ]
+			  self class new
+				  previousLink: previousLink;
+				  value: value;
+				  nextLink: link;
+				  yourself ]
 ]

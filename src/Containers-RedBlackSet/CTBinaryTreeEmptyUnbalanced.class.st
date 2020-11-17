@@ -13,9 +13,5 @@ CTBinaryTreeEmptyUnbalanced >> includes: anObject witness: aWitness inSet: aSet 
 CTBinaryTreeEmptyUnbalanced >> push: anObject witness: aWitness continuation: aContinuation inSet: aSet [
 	^ (aSet is: anObject equalTo: aWitness)
 		  ifTrue: [ aContinuation value: aSet representation ]
-		  ifFalse: [ 
-			  aSet class nodeTreeClass
-				  left: aSet class emptyTreeClass new
-				  value: anObject
-				  right: aSet class emptyTreeClass new ]
+		  ifFalse: [ aSet binaryTreeElementLeaf: anObject ]
 ]

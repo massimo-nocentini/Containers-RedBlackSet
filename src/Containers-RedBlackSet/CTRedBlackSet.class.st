@@ -4,14 +4,14 @@ Class {
 	#category : #'Containers-RedBlackSet'
 }
 
-{ #category : #requirements }
-CTRedBlackSet class >> emptyTreeClass [
-	^ CTBinaryTreeEmptyBalanced
+{ #category : #creating }
+CTRedBlackSet >> binaryTreeElementEmpty [
+	^ CTBinaryTreeEmptyBalanced new
 ]
 
-{ #category : #requirements }
-CTRedBlackSet class >> nodeTreeClass [
-	^ CTBinaryTreeNodeBalancedRed
+{ #category : #creating }
+CTRedBlackSet >> binaryTreeElementNode [
+	^ CTBinaryTreeNodeBalancedRed new
 ]
 
 { #category : #adding }

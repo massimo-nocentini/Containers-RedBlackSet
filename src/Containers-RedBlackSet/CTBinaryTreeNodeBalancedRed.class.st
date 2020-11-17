@@ -6,10 +6,11 @@ Class {
 
 { #category : #converting }
 CTBinaryTreeNodeBalancedRed >> asBlackNode [
-	^ CTBinaryTreeNodeBalancedBlack
-		  left: previousLink
-		  value: value
-		  right: nextLink
+	^ CTBinaryTreeNodeBalancedBlack new
+		  previousLink: previousLink;
+		  value: value;
+		  nextLink: nextLink;
+		  yourself
 ]
 
 { #category : #'as yet unclassified' }
