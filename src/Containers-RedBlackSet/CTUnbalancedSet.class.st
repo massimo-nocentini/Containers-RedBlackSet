@@ -1,11 +1,8 @@
 Class {
 	#name : #CTUnbalancedSet,
-	#superclass : #Object,
+	#superclass : #CTBinaryTreeAbstract,
 	#traits : 'TContainerSet',
 	#classTraits : 'TContainerSet classTrait',
-	#instVars : [
-		'representation'
-	],
 	#category : #'Containers-RedBlackSet'
 }
 
@@ -39,22 +36,22 @@ CTUnbalancedSet class >> nodeTreeClass [
 	^ CTBinaryTreeNodeUnbalanced
 ]
 
+{ #category : #creating }
+CTUnbalancedSet >> binaryTreeElementEmpty [
+	^ CTBinaryTreeEmptyUnbalanced new
+]
+
+{ #category : #creating }
+CTUnbalancedSet >> binaryTreeElementNode [
+	^ CTBinaryTreeNodeUnbalanced new
+]
+
 { #category : #adding }
 CTUnbalancedSet >> includes: anObject [
 	^ representation
 		  includes: anObject
 		  witness: Object new
 		  inSet: self
-]
-
-{ #category : #adding }
-CTUnbalancedSet >> is: anObject equalTo: aRefinedWitness [
-	^ anObject = aRefinedWitness
-]
-
-{ #category : #adding }
-CTUnbalancedSet >> is: anObject lessThan: aRefinedWitness [
-	^ anObject < aRefinedWitness
 ]
 
 { #category : #adding }
@@ -65,14 +62,4 @@ CTUnbalancedSet >> push: anObject [
 		                  witness: Object new
 		                  continuation: hop
 		                  inSet: self ] callWithCurrentContinuation
-]
-
-{ #category : #accessing }
-CTUnbalancedSet >> representation [
-	^ representation
-]
-
-{ #category : #accessing }
-CTUnbalancedSet >> representation: anObject [
-	representation := anObject
 ]

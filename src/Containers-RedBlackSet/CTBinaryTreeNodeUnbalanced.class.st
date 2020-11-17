@@ -4,7 +4,7 @@ Class {
 	#category : #'Containers-RedBlackSet'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 CTBinaryTreeNodeUnbalanced >> includes: anObject witness: aWitness inSet: aSet [
 	^ (aSet is: anObject lessThan: value)
 		  ifTrue: [ 
@@ -12,23 +12,47 @@ CTBinaryTreeNodeUnbalanced >> includes: anObject witness: aWitness inSet: aSet [
 		  ifFalse: [ nextLink includes: anObject witness: value inSet: aSet ]
 ]
 
-{ #category : #'as yet unclassified' }
-CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aContinuation inSet: aSet [
-	^ (aSet is: anObject lessThan: value)
+{ #category : #actions }
+CTBinaryTreeNodeUnbalanced >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTree [
+	^ aBTElement ifEmpty: [ self ] ifNotEmpty: [ 
+		  (aBinaryTree is: value lessThan: aBTElement value)
+			  ifTrue: [ 
+				  | r |
+				  r := nextLink ifEmpty: [ aBTElement ] ifNotEmpty: [ 
+					       nextLink
+						       mergeBinaryTreeElement: aBTElement
+						       inBinaryTree: aBinaryTree ].
+				  aBinaryTree
+					  leftBinaryTreeElement: previousLink
+					  value: value
+					  rightBinaryTreeElement: r ]
+			  ifFalse: [ 
+			  aBTElement mergeBinaryTreeElement: self inBinaryTree: aBinaryTree ] ]
+]
+
+{ #category : #adding }
+CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aContinuation inSet: aBinaryTree [
+	^ (aBinaryTree is: anObject lessThan: value)
 		  ifTrue: [ 
 			  | link |
 			  link := previousLink
 				          push: anObject
 				          witness: aWitness
 				          continuation: aContinuation
-				          inSet: aSet.
-			  self class left: link value: value right: nextLink ]
+				          inSet: aBinaryTree.
+			  aBinaryTree
+				  leftBinaryTreeElement: link
+				  value: value
+				  rightBinaryTreeElement: nextLink ]
 		  ifFalse: [ 
 			  | link |
 			  link := nextLink
 				          push: anObject
 				          witness: value
 				          continuation: aContinuation
-				          inSet: aSet.
-			  self class left: previousLink value: value right: link ]
+				          inSet: aBinaryTree.
+			  aBinaryTree
+				  leftBinaryTreeElement: previousLink
+				  value: value
+				  rightBinaryTreeElement: link ]
 ]
