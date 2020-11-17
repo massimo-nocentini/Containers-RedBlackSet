@@ -1,8 +1,6 @@
 Class {
 	#name : #CTUnbalancedSet,
 	#superclass : #CTBinaryTreeAbstract,
-	#traits : 'TContainerSet',
-	#classTraits : 'TContainerSet classTrait',
 	#category : #'Containers-RedBlackSet'
 }
 
