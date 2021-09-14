@@ -24,10 +24,11 @@ CTUnbalancedSet >> includes: anObject [
 
 { #category : #adding }
 CTUnbalancedSet >> push: anObject [
-	representation := [ :hop | 
-	                  representation
-		                  push: anObject
-		                  witness: Object new
-		                  continuation: hop
-		                  inSet: self ] callWithCurrentContinuation
+
+	representation := Continuation currentDo: [ :hop | 
+		                  representation
+			                  push: anObject
+			                  witness: Object new
+			                  continuation: hop
+			                  inSet: self ]
 ]
