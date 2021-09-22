@@ -25,10 +25,10 @@ CTUnbalancedSet >> includes: anObject [
 { #category : #adding }
 CTUnbalancedSet >> push: anObject [
 
-	representation := Continuation currentDo: [ :hop | 
-		                  representation
-			                  push: anObject
-			                  witness: Object new
-			                  continuation: hop
-			                  inSet: self ]
+	representation := [ :hop | 
+	                  representation
+		                  push: anObject
+		                  witness: Object new
+		                  continuation: hop
+		                  inSet: self ] valueWithArgumentedExit
 ]
