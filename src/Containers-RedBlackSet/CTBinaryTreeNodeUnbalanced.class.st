@@ -32,6 +32,7 @@ CTBinaryTreeNodeUnbalanced >> mergeBinaryTreeElement: aBTElement inBinaryTree: a
 
 { #category : #adding }
 CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aContinuation inSet: aBinaryTree [
+
 	^ (aBinaryTree is: anObject lessThan: value)
 		  ifTrue: [ 
 			  | link |
@@ -40,7 +41,8 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          witness: aWitness
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
-			  self class new
+
+			  aBinaryTree binaryTreeElementNode
 				  previousLink: link;
 				  value: value;
 				  nextLink: nextLink;
@@ -52,7 +54,8 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          witness: value
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
-			  self class new
+
+			  aBinaryTree binaryTreeElementNode
 				  previousLink: previousLink;
 				  value: value;
 				  nextLink: link;

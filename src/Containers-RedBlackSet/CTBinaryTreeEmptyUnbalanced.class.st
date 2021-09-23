@@ -11,7 +11,9 @@ CTBinaryTreeEmptyUnbalanced >> includes: anObject witness: aWitness inSet: aSet 
 
 { #category : #'as yet unclassified' }
 CTBinaryTreeEmptyUnbalanced >> push: anObject witness: aWitness continuation: aContinuation inSet: aSet [
+
 	^ (aSet is: anObject equalTo: aWitness)
-		  ifTrue: [ aContinuation value: aSet representation ]
+		  ifTrue: [ 
+		  aSet pushingAlreadyIncluded: anObject continuation: aContinuation ]
 		  ifFalse: [ aSet binaryTreeElementLeaf: anObject ]
 ]

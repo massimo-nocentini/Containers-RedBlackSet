@@ -6,3 +6,11 @@ Class {
 	#superclass : #CTBinaryTreeAbstractTest,
 	#category : #'Containers-RedBlackSet-Tests'
 }
+
+{ #category : #initialization }
+CTUnbalancedSetTest >> setUp [
+
+	super setUp.
+
+	treeClass := CTUnbalancedSet
+]

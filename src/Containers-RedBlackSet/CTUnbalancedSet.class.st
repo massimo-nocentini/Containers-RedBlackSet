@@ -32,3 +32,9 @@ CTUnbalancedSet >> push: anObject [
 		                  continuation: hop
 		                  inSet: self ] valueWithArgumentedExit
 ]
+
+{ #category : #'as yet unclassified' }
+CTUnbalancedSet >> pushingAlreadyIncluded: anObject continuation: aContinuation [
+
+	^ aContinuation value: representation
+]
