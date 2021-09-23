@@ -14,20 +14,24 @@ CTBinaryTreeNodeUnbalanced >> includes: anObject witness: aWitness inSet: aSet [
 
 { #category : #actions }
 CTBinaryTreeNodeUnbalanced >> mergeBinaryTreeElement: aBTElement inBinaryTree: aBinaryTree [
-	^ aBTElement ifEmpty: [ self ] ifNotEmpty: [ 
-		  (aBinaryTree is: value lessThan: aBTElement value)
-			  ifTrue: [ 
-				  | r |
-				  r := nextLink ifEmpty: [ aBTElement ] ifNotEmpty: [ 
-					       nextLink
-						       mergeBinaryTreeElement: aBTElement
-						       inBinaryTree: aBinaryTree ].
-				  aBinaryTree
-					  leftBinaryTreeElement: previousLink
-					  value: value
-					  rightBinaryTreeElement: r ]
-			  ifFalse: [ 
-			  aBTElement mergeBinaryTreeElement: self inBinaryTree: aBinaryTree ] ]
+
+	| lesserTree greaterTree tree |
+	self value < aBTElement value
+		ifTrue: [ 
+			lesserTree := self.
+			greaterTree := aBTElement ]
+		ifFalse: [ 
+			lesserTree := aBTElement.
+			greaterTree := self ].
+
+	tree := lesserTree nextLink
+		        mergeBinaryTreeElement: greaterTree
+		        inBinaryTree: aBinaryTree.
+
+	^ aBinaryTree
+		  leftBinaryTreeElement: lesserTree previousLink
+		  value: lesserTree value
+		  rightBinaryTreeElement: tree
 ]
 
 { #category : #adding }

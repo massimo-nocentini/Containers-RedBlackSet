@@ -7,10 +7,8 @@ Class {
 	#category : #'Containers-RedBlackSet-Tests'
 }
 
-{ #category : #initialization }
-CTUnbalancedSetTest >> setUp [
+{ #category : #tests }
+CTUnbalancedSetTest >> tree: aCollection [
 
-	super setUp.
-
-	treeClass := CTUnbalancedSet
+	^ aCollection asUnbalancedSet
 ]
