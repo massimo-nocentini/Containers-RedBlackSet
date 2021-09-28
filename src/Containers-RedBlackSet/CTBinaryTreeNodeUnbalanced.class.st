@@ -46,7 +46,7 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
 
-			  aBinaryTree binaryTreeElementNode
+			  self class new
 				  previousLink: link;
 				  value: value;
 				  nextLink: nextLink;
@@ -59,7 +59,7 @@ CTBinaryTreeNodeUnbalanced >> push: anObject witness: aWitness continuation: aCo
 				          continuation: aContinuation
 				          inSet: aBinaryTree.
 
-			  aBinaryTree binaryTreeElementNode
+			  self class new
 				  previousLink: previousLink;
 				  value: value;
 				  nextLink: link;

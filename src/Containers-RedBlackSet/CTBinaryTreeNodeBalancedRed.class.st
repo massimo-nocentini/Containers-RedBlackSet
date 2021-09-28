@@ -13,6 +13,14 @@ CTBinaryTreeNodeBalancedRed >> asBlackNode [
 		  yourself
 ]
 
+{ #category : #converting }
+CTBinaryTreeNodeBalancedRed >> asShape [
+
+	^ super asShape
+		  color: Color red;
+		  yourself
+]
+
 { #category : #'as yet unclassified' }
 CTBinaryTreeNodeBalancedRed >> balance: aBlock representation: aDoubleLink [
 	^ aDoubleLink
