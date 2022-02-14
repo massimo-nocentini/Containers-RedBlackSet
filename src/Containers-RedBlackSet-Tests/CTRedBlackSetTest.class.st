@@ -7,6 +7,12 @@ Class {
 	#category : #'Containers-RedBlackSet-Tests'
 }
 
+{ #category : #asserting }
+CTRedBlackSetTest class >> shouldInheritSelectors [
+
+	^ true
+]
+
 { #category : #tests }
 CTRedBlackSetTest >> tree: aCollection [
 

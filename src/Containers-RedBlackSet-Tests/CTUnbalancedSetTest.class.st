@@ -7,6 +7,12 @@ Class {
 	#category : #'Containers-RedBlackSet-Tests'
 }
 
+{ #category : #asserting }
+CTUnbalancedSetTest class >> shouldInheritSelectors [
+
+	^ true
+]
+
 { #category : #tests }
 CTUnbalancedSetTest >> testPushDoubledObject [
 
